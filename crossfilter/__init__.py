@@ -76,7 +76,7 @@ class Summary(Chart):
     def _repr_javascript_(self):
         return """
         var all = {cf}.groupAll();
-        element.append('<div id="dc-{uuid}-count"><strong class="filter-count">?</strong> selected ' +
+        document.querySelector("#output-area").append('<div id="dc-{uuid}-count"><strong class="filter-count">?</strong> selected ' +
                        'out of <strong class="total-count">?</strong> records</div>' +
                        '<div style="clear: both;"></div>');
         var count = dc.dataCount("#dc-{uuid}-count");
@@ -97,7 +97,7 @@ class BarChart(ProperyChart):
         var prop = "{prop}";
         var propId = prop.replace(".", "_");
         var chartId = "dc-{uuid}-chart-" + propId;
-        element.append('<div style="float: left;" id="' + chartId + '"><strong>' + prop + '</strong>' +
+        document.querySelector("#output-area").append('<div style="float: left;" id="' + chartId + '"><strong>' + prop + '</strong>' +
                        '<div style="clear: both;"></div></div>');
         var dim = {cf}.dimension(pluck(prop));
         var group = dim.group().reduceCount();
@@ -119,7 +119,7 @@ class RowChart(ProperyChart):
         var prop = "{prop}";
         var propId = prop.replace(".", "_");
         var chartId = "dc-{uuid}-chart-" + propId;
-        element.append('<div style="float: left;" id="' + chartId + '"><strong>' + prop + '</strong>' +
+        document.querySelector("#output-area").append('<div style="float: left;" id="' + chartId + '"><strong>' + prop + '</strong>' +
                        '<div style="clear: both;"></div></div>');
         var dim = {cf}.dimension(pluck(prop));
         var group = dim.group().reduceCount();
